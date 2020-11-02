@@ -34,12 +34,12 @@ module.exports = {
         // provide the app's title in webpack's name field, so that
         // it can be accessed in index.html to inject the correct title.
         name: '易久批',
-        resolve: {
-            alias: {
-                '@': resolve('src'),
-                'api': resolve('src/api'),
-            }
-        }
+        // resolve: {
+        //     alias: {
+        //         '@': resolve('src'),
+        //         'api': resolve('src/api'),
+        //     }
+        // }
     },
 
 }
