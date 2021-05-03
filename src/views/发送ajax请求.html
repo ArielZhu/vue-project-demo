@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>发送ajax请求</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+    // 接口地址：https://api.apiopen.top/getJoke
+
+    const p = new Promise((resolve, reject) => {
+
+        // 1,创建对象
+        const xhr = new XMLHttpRequest();
+        // 2.初始化
+        xhr.open("GET", "https://api.apiopen.top/getJoke");
+        // 3.发送
+        xhr.send();
+        // 4.绑定事件，处理响应结果
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                // 判断响应状态码，200-299
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    //表示成功
+                    resolve(xhr.response)
+                } else {
+                    //失败
+                    reject(xhr.status)
+                }
+
+            }
+        }
+
+    })
+
+    // 指定回调
+    // 调用then方法，then方法的返回结果上promise对象，对象状态由回调函数的执行结果决定，
+    const result = p.then((res => {
+        console.log(res)
+        throw '出错了'
+    }), reason => {
+        console.error(reason)
+    })
+    console.log(result)
+
+
+    // async 与await
+    async function main() {
+        let result = await p;
+        console.log(result)
+    }
+
+
+
+</script>

@@ -1,8 +1,8 @@
 
 
 const HomeRouter = {
-    path: '/home',
-    name: 'home',
+    path: '/Home',
+    name: 'Home',
     component: ()=>import('../../views/Home.vue'),
     meta: {
         index: 1

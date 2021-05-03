@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // 只能存储字符串类型
+    import Cookie from 'cookie_js'
+    // html本地存储，存储大小5m，临时性，网页关闭就被清除
+    sessionStorage.setItem('item', '');
+    sessionStorage.getItem('item');
+    sessionStorage.removeItem('item');
+    sessionStorage.clear()// 清除所有
+    // 本地存储长期，需要手动清除
+    localStorage.setItem('item', '');
+    localStorage.getItem('item');
+    localStorage.removeItem('item');
+    localStorage.clear()// 清除所有
+    // 服务器端
+    Cookie.set('item', '');
+    Cookie.get('item');
+    Cookie.remove('key1', 'key2', 'key3')
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>构造器函数</h1>
+<h1>构造器函数</h1>
+<h1>promise读取文件</h1>
+
+
+</body>
+</html>
+
+<script>
+    // 解决回调地狱
+    function one() {
+        setTimeout(() => {
+            console.log((111))
+            iterator.next();
+        }, 1000)
+    }
+
+    function two() {
+        setTimeout(() => {
+            console.log((222))
+            iterator.next();
+        }, 2000)
+    }
+
+    function three() {
+        setTimeout(() => {
+            console.log((333))
+            iterator.next();
+        }, 3000)
+    }
+
+    function* gen() {
+        yield one();
+        yield two();
+        yield three();
+    }
+
+    //
+    // // //调用生成器函数
+    // let iterator = gen();
+    // iterator.next();
+
+    /************/
+    function getUsers() {
+
+        setTimeout(() => {
+            let data = '用户数据';
+            // 调用next方法，并将数据传入
+            iterator2.next(data)
+        }, 1000)
+    }
+
+    function getOrder() {
+
+        setTimeout(() => {
+            let data = '订单数据'
+            iterator2.next(data)
+
+        }, 1000)
+    }
+
+    function getGoods() {
+
+        setTimeout(() => {
+            let data = '商品数据'
+            iterator2.next(data)
+        }, 1000)
+    }
+
+    // yield*后面跟的是一个可遍历的结构，它会调用该结构的遍历器接口t
+
+    // 生成器函数
+    function* gen() {
+        let users = yield getUsers();
+        console.log(users)
+        let order = yield getOrder();
+        console.log(order);
+        let goods = yield getGoods();
+        console.log(goods)
+    }
+
+    let iterator2 = gen();
+    iterator2.next()
+
+    // //读取文件
+    // // 1.引入读取文件
+    // const fs = require('fs');
+    // //2调用方法读取文件
+    // fs.readFile('./About.vue', (err, data) => {
+    //     if (err) throw (err);
+    //     console.log(data)
+    // })
+    //
+    // const p = new Promise((resolve, reject) => {
+    //     fs.readFile('./诗.md', (err, data) => {
+    //         if (err) reject(err);
+    //         resolve(data)
+    //     })
+    // })
+    //
+    // p.then(res => {
+    //     console.log(res)
+    // }).catch(res => {
+    //     console.log('读取失败')
+    // })
+
+    var p1 = new Promise((resolve, reject) => {
+        resolve('p1');
+    });
+    var p2 = new Promise((resolve, reject) => {
+        reject('p2');
+    });
+    var p3 = new Promise((resolve, reject) => {
+        reject('p3');
+    });
+    Promise.all([p1, p2, p3].map(p => p.catch(e => '出错后返回的值' )))
+        .then(values => {
+            console.log(values);
+        }).catch(err => {
+        console.log(err);
+    })
+
+    async function async1() {
+        console.log('2async1 start');
+        await async2();
+        console.log('6async1 end');
+    }
+    async function async2() {
+        console.log('3async2');
+    }
+    console.log('1script start');
+    setTimeout(function() {
+        console.log('8setTimeout');
+    }, 0)
+    async1();
+    // 宏任务
+    new Promise(function(resolve) {
+        console.log('4promise1');
+        resolve();
+    }).then(function() {
+        console.log('7promise2');
+    });
+    console.log('5script end');
+
+
+
+</script>
+script start    async2 async1 start async1 end

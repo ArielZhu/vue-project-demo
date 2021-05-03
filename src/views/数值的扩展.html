@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Number.EPSILON
+    //Number.isFinite() 有限数
+    // Number.isInteger() 整数
+    // Math.trunc() 抹掉小数
+    // Math.asin() 判断正，0 负
+    // Math.ceil()向上舍入
+    // Math.floor()向下舍入
+    // Math.round()四舍五入
+    // console.log( Object.is(120,120)) 判断相等
+    // Object.assign() 合并
+
+
+    // 返回的结果是promise类型的对象
+    async function fn() {
+        return 'aaa';
+
+    }
+
+    const result = fn();
+    console.log(result)
+
+    //调用then方法
+    result.then(val => {
+        console.log(val)
+    }, err => {
+
+    })
+
+    //创建promise
+    const p = new Promise((resolve, reject) => {
+        resolve("成功")
+    })
+
+    // await要放在async函数中,返回promise对象成功的值
+    async function main() {
+        let result = await p;
+        console.log(result)
+    }
+
+    main()
+    console.log("成功")
+
+    // 将对象转变为数组
+    const obj = {}
+    const m = new Map(Object.entries(obj))
+
+    //不定参数
+    function add(...x) {
+        console.log(x)
+        // 相加
+        return x.reduce((m, n) => m + n);
+    }
+
+    console.log(add(1, 2, 3))
+    console.log(add(1, 2, 3, 4))
+
+
+    const str = '12345';
+    let str_ = str.split('').reverse().join('');
+    console.log(str_)
+    let str_1 = str.slice(2, 4)
+    console.log(str_1)
+    const arr2 = [1, 2, [3, 4, [5, 6]]];
+    console.log(arr2.flatMap(x => x * 2))
+    console.log(arr2.flat(Infinity))
+    console.log(Math.round(2.54))
+    console.log(Math.ceil(2.34))
+    console.log(Math.floor(2.34))
+    console.log(Math.random())
+    let strr = String(Math.random()).split('.')[1].slice(0, 16)
+    console.log(strr)
+
+    let fun = function () {
+        let res = "0";
+        while (res.length !== 16) {
+            res = String(Math.random()).split('.')[1].slice(0, 16)
+        }
+        console.log(res)
+        return res;
+    }
+    let strrr = "shbng12344";
+    let numm = strrr.split('').map(a => a.charCodeAt()).join('');
+    console.log(numm)
+    let num2 = Math.sin(numm).toString().split('.')[1].slice(0, 16);
+    console.log(num2)
+
+
+
+
+    //字符串去重
+    let str23 = 'CanvasRenderingContext2D';
+    let newStr23 = [...new Set(str23.split(''))].join('');
+    console.log(newStr23)
+    let arr9 = [1, 2, 3]
+    console.log(arr9.map(parseInt))
+
+    // Array.from()
+    // 1.将类数组对象转换为真数组
+    let set = new Set(arr9)
+    console.log(set)
+    console.log(Array.from(set))
+    // 2.将字符串转换为数组
+    console.log(Array.from(str23))
+    // 3.接收第二个参数，做逻辑处理
+    console.log(Array.from(set, (a) => a + 1))
+
+    var filesize = 2837475;
+
+    function formatterFilesize(size) {
+        var K = 1024;
+        var M = 1024 ** 2;
+        var G = 1024 ** 3;
+
+        if (size < M) {
+            return (size / 1024).toFixed(2) + 'K';
+        } else if (size < G) {
+            return (size / 1024 ** 2).toFixed(2) + 'M';
+        } else {
+            return (size / 1024 ** 3).toFixed(2) + 'G';
+        }
+    }
+
+
+    //symbol
+    let id = Symbol('id');
+    console.log(id);
+    let objSymbol = {
+        [id]: 'symbol'
+    }
+    let array1 =Object.getOwnPropertySymbols(objSymbol);
+    console.log(array1);
+    console.log(objSymbol[array1[0]])
+
+    let name1 = Symbol.for('name'); //检测到未创建后新建
+    let name2 = Symbol.for('name'); //检测到已创建后返回
+    console.log(name1 === name2); // true
+    console.log(Symbol.keyFor(name1));  // 'name'
+    console.log(Symbol.keyFor(name2)); // 'name'
+
+    // BigInt可以表示任意大的整数。解决超过number类型的数值范围后，丢失精度问题
+
+    // typeof
+    // instanceof
+
+
+
+</script>
+
+</body>
+</html>

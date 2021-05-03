@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>set集合</title>
+    <title>map数组</title>
+
+</head>
+<body>
+</body>
+</html>
+
+<script>
+    let arr = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+    //1.去重
+    let result = [...new Set(arr)];
+    console.log(result)
+    console.log(new Set(arr))
+    //2.交集
+    let arr2 = [4, 5, 6, 5, 6];
+    let result2 = [...new Set(arr)].filter(item => new Set(arr2).has(item));
+    console.log(result2)
+
+    // 3.并集
+    let union = [...new Set([...arr, ...arr2])];
+
+    //4.差集
+    let diff = [...new Set(arr)].filter(item => !(new Set(arr2).has(item)))
+    //     add(value)：添加某个值，返回Set结构本身。
+    // delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。
+    // has(value)：返回一个布尔值，表示该值是否为Set的成员。
+    // clear()：清除所有成员，没有返回值。
+
+    let m = new Map();
+    console.log(m);
+    m.set('name', 'zhujie');
+    m.set('change', () => {
+        console.log('aaaa')
+    });
+    console.log(m.size);
+    m.get('name');
+    m.delete('name')
+
+    const arr3 = [2, 4, 1];
+    console.log(Math.max.apply(null, arr3))
+    console.log(Math.max(...arr3))
+    console.log(new Date('2020/4/13 12:00').getTime())
+
+    // var date = '2015-03-05 17:59:00.0';
+    // date = date.substring(0,19);
+    // date = date.replace(/-/g,'/'); //必须把日期'-'转为'/'
+    // var timestamp = new Date(date).getTime();
+    // document.write(timestamp);
+
+    const name="nihaohhhhhhhhaaa"
+    console.log(name.substring(0, 10).concat('...'))
+
+</script>

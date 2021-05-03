@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>class类</title>
+    <title>静态成员</title>
+
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function phone(brand, price) {
+        this.brand = brand;
+        this.price = price;
+    }
+
+    //添加方法
+    phone.prototype.call = function () {
+        console.log("我可以call")
+    }
+    //实例化对象
+    let huawei = new phone("华为", 5999);
+    huawei.call();
+    console.log(huawei);
+
+
+    class Phone {
+        //构造方法，自动执行
+        constructor(brand, price) {
+            this.brand = brand;
+            this.price = price;
+        }
+
+        //方法必须使用该语法，es6
+        call() {
+            console.log("我可以call")
+        }
+    }
+
+    let onePlus = new Phone('1+', 1999);
+    console.log(onePlus)
+
+
+    function phone2() {
+
+    }
+    phone2.prototype.size='5.5'
+
+    // 属于函数对象，属于静态成员
+    phone2.name = '手机';
+    phone2.change = function () {
+        console.log("我可以改变")
+    }
+
+
+    let nokia = new phone2();
+    // 函数对象的属性和实利对象的属性不相通
+    console.log(nokia.name)
+    console.log(nokia.change())
+    console.log(nokia.size)
+
+
+</script>

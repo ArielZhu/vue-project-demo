@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="module">
+    import quickSort from "../views/quickSort.js";
+
+    // 线性表插入
+    let a = [1, 3, 4, 5]
+    for (let i = a.length; i > 1; i--) {
+        a[i] = a[i - 1]
+    }
+    a[1] = 2;
+    console.log(a)
+
+    //线性表删除
+    let b = [1, 2, 3, 4, 5]
+    for (let i = 1; i < b.length - 1; i++) {
+        b[i] = b[i + 1]
+    }
+    b[b.length - 1] = 0
+    console.log(b)
+
+    // 冒泡排序
+    // 两两比较，大的往后排
+    let c = [3, 1, 5, 6, 3, 4, 8, 7, 6, 9]
+    console.log(c)
+    for (let j = c.length - 1; j > 0; j--) {
+        let flag = true
+        for (let i = 0; i < c.length - 1; i++) {
+            if (c[i] > c[i + 1]) {
+                let temp = c[i];
+                c[i] = c[i + 1];
+                c[i + 1] = temp;
+                flag = false
+            }
+        }
+        if (flag) {
+            break
+        }
+    }
+    // 每次执行最大的就排到最后了
+    // 时间复杂度 n(n-1)/2
+    console.log(c)
+    // sort()内部是利用递归进行冒泡排序的
+    let d = [3, 1, 5, 6, 3, 4, 8, 7, 6, 9];
+    d.sort((a, b) => a - b)
+    console.log(d)
+
+    // 选择排序
+    //   index先定位在第一个元素，后面的元素找到小的再定位到该元素，直到找到最小值的index,然后和第一个元素移位
+    //      index定位在第二个元素，重复上述操作
+
+    let e = [3, 1, 5, 6, 3, 4, 8, 7, 6, 9];
+
+    for (let j = 0; j < e.length - 1; j++) {
+        let index = j;
+        for (let i = j + 1; i < e.length; i++) {
+            if (e[i] < e[index]) {
+                index = i;
+            }
+        }
+        if (index != j) {
+            let temp1 = e[index];
+            e[index] = e[j];
+            e[j] = temp1;
+        }
+
+    }
+    console.log(e)
+
+    // 快速排序-基本思想
+    // 1.选定pivot中心轴，
+    // 2.将大于pivot的数字放在pivot的右边，
+    // 3.将小于pivot的数字放在pivot的左边，
+    // 分别对左右序列重复前面三步，直到序列长度为1，停止排序
+    quickSort.print()
+
+</script>
+
+</html>
+
+
